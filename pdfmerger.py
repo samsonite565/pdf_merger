@@ -1,4 +1,5 @@
 from PyPDF2 import PdfMerger
+from datetime import datetime
 import re
 import os
 
@@ -22,8 +23,8 @@ def main():
 
 
 def mergefile(files):
-
-    with open("month_name.pdf", mode="wb") as new_file:
+    month = datetime.now().strftime("%B")
+    with open(f"{month}.pdf", mode="wb") as new_file:
         merger = PdfMerger()
         for pdf in files:
             merger.append(pdf)
